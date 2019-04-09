@@ -1,6 +1,8 @@
 # pwshtf
 Powershell Terraform
 
+[![Build Status](https://travis-ci.org/josephdrane/pwshtf.svg?branch=master)](https://travis-ci.org/josephdrane/pwshtf)
+
 ## Problem Statement
 
 We need a consistent and easy way to run terraform, from powershell, that abstracts away the complexities and provides a nice user experience for quickly getting new services spun up in a secure and standardized way.

@@ -16,7 +16,7 @@ matrix:
 #   - pwsh -f "josephdrane/pwshtf/build.ps1"
 
 script:
-  - pwsh -f "josephdrane/pwshtf/app/tf_install.test.ps1"
+  - pwsh josephdrane/pwshtf/app/tf_install.test.ps1
 
 # after_success:
 #   - pwsh -f "josephdrane/pwshtf/deploy.ps1"

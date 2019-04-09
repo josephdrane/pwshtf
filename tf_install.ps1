@@ -31,7 +31,11 @@ class PowerShellTerraform {
             Write-Host "OS Detected is : " + $this.Os
             Write-host "Downloading : " + $this.GetTerraformDownloadLink()
             $this.DownloadTerraform()
-            Write-Host "Extracting Zip and testing again"
+            # Should extract zip and try again to get version
+            return 'PASS'
+        }
+        else {
+            return 'FAIL'
         }
     }
 
@@ -78,6 +82,7 @@ class PowerShellTerraform {
 }
 
 
+# TESTING :=
 
 $pwshtf = [PowerShellTerraform]::new()
 
@@ -85,3 +90,4 @@ $pwshtf.GetOs()
 $pwshtf.GetTerraformDownloadLink()
 $pwshtf.DownloadTerraform()
 $pwshtf.TerraformVersion()
+$pwshtf.CheckTerraform()

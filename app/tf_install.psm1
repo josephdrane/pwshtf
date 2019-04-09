@@ -1,8 +1,3 @@
-# $test = (Invoke-WebRequest -uri https://www.terraform.io/downloads.html).Links.Href
-
-# $test
-
-
 class PowerShellTerraform {
 
     [string]$Os = $this.GetOs()
@@ -27,7 +22,6 @@ class PowerShellTerraform {
 
     [string]CheckTerraform() {
         if ( -not ($this.TerraformVersion() -like 'VERSION')) {
-            Write-Host "Terraform not found"
             Write-Host "OS Detected is : " + $this.Os
             Write-host "Downloading : " + $this.GetTerraformDownloadLink()
             $this.DownloadTerraform()
@@ -41,7 +35,15 @@ class PowerShellTerraform {
 
     [string]TerraformVersion() {
         # TODO : needs to be os agnostic based on file path.
-        $test = Invoke-Command -ScriptBlock { ./terraform --version }
+        $test = Invoke-Command -ScriptBlock { 
+            try {
+                terraform --version
+            }
+            catch {
+                write-host "Terraform not found"
+            }  
+        }
+        
         if ($test) {
             return 'VERSION : ' + $test
         }
@@ -81,13 +83,11 @@ class PowerShellTerraform {
 
 }
 
+# Have to do this so we can export this class
+## this can't be the only way, can it?
+function Get-PowerShellTerraform() {
+    return [PowerShellTerraform]::new()
+}
 
-# TESTING :=
-
-$pwshtf = [PowerShellTerraform]::new()
-
-$pwshtf.GetOs()
-$pwshtf.GetTerraformDownloadLink()
-$pwshtf.DownloadTerraform()
-$pwshtf.TerraformVersion()
-$pwshtf.CheckTerraform()
+# Export the function, which can generate a new instance of the class
+Export-ModuleMember -Function Get-PowerShellTerraform

@@ -9,14 +9,14 @@ matrix:
         - brew cask install powershell
   fast_finish: true
 
-install:
-  - pwsh -f "${env:TRAVIS_BUILD_DIR}/install-dependencies.ps1"
+# install:
+#   - pwsh -f "${env:TRAVIS_BUILD_DIR}/install-dependencies.ps1"
 
-before_script:
-  - pwsh -f "${env:TRAVIS_BUILD_DIR}/build.ps1"
+# before_script:
+#   - pwsh -f "${env:TRAVIS_BUILD_DIR}/build.ps1"
 
 script:
-  - pwsh -f "${env:TRAVIS_BUILD_DIR}/test.ps1"
+  - pwsh -f "${env:TRAVIS_BUILD_DIR}/app/tf_install.test.ps1"
 
-after_success:
-  - pwsh -f "${env:TRAVIS_BUILD_DIR}/deploy.ps1"
+# after_success:
+#   - pwsh -f "${env:TRAVIS_BUILD_DIR}/deploy.ps1"

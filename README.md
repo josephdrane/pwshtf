@@ -17,6 +17,9 @@ My first time writing powershell classes. I tested this on a Mac and it works fo
 
 ## TODO : 
 
+Needs code that extracts the zip file it downloads for terraform
+Needs code that abstracts terraform config into an object
+Needs the build server config setup to run on windows as well as MacOS
 Needs unit tests for these areas.
 Could use stronger typing on settings.
 Core functionality of terraform template to objects needs to be done.

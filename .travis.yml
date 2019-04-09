@@ -5,7 +5,7 @@ matrix:
     - os: osx
       osx_image: xcode9.1
       before_install:
-        - brew tap caskroom/cask
+        # - brew tap caskroom/cask
         - brew cask install powershell
   fast_finish: true
 
@@ -16,7 +16,7 @@ matrix:
 #   - pwsh -f "josephdrane/pwshtf/build.ps1"
 
 script:
-  - pwsh josephdrane/pwshtf/app/tf_install.test.ps1
+  - pwsh -File josephdrane/pwshtf/app/tf_install.test.ps1
 
 # after_success:
 #   - pwsh -f "josephdrane/pwshtf/deploy.ps1"
